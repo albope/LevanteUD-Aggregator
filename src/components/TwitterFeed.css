@@ -1,0 +1,11 @@
+.twitter-feed {
+  background-color: #004C99;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.twitter-feed h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}

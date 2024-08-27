@@ -1,0 +1,101 @@
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+h1, h2 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.App {
+  text-align: center;
+}
+
+.header {
+  background-color: #004C99;
+  padding: 20px;
+  color: white;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 0 15px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.hero {
+  background-color: #82001C;
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.noticias {
+  padding: 40px 20px;
+}
+
+.noticias h2 {
+  color: #004C99;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.noticia {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.noticia img {
+  width: 100%;
+  height: auto;
+}
+
+.noticia h3 {
+  margin: 15px;
+  font-size: 1.5em;
+  color: #004C99;
+}
+
+.noticia p {
+  margin: 0 15px 15px 15px;
+}
+
+.noticia a {
+  display: block;
+  padding: 10px;
+  background-color: #82001C;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.noticia:hover {
+  transform: translateY(-5px);
+}
+
+.twitter-feed {
+  background-color: #004C99;
+  color: white;
+  padding: 40px 20px;
+}

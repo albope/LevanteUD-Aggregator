@@ -1,0 +1,58 @@
+.top-bar {
+  background-color: #bb162b; /* Encabezado rojo */
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center; /* Centrar el título */
+  align-items: center;
+}
+
+.site-name {
+  font-family: 'Montserrat', sans-serif; /* Mantener la fuente consistente */
+  font-size: 1.5em; /* Aumentar el tamaño de la fuente */
+  font-weight: 700; /* Aplicar negrita */
+  color: white;
+  text-align: center;
+}
+
+.nav-bar {
+  background-color: #051e40; /* Encabezado azul */
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: flex-start; /* Alinear contenido a la izquierda */
+  align-items: center;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 40px;
+  height: auto;
+  margin-right: 20px; /* Espacio entre el logo y las secciones */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 0 15px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1em;
+}
+
+.nav-links a:hover {
+  color: #ffdd57;
+}

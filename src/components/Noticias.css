@@ -1,0 +1,81 @@
+.noticias {
+  padding: 40px 20px;
+}
+
+.filtro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.filtro-medios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filtro-medios button {
+  background-color: #f0f0f0;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.filtro-medios button.active {
+  background-color: #004C99;
+  color: white;
+}
+
+.busqueda input {
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.noticia {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.noticia img {
+  width: 100%;
+  height: auto;
+}
+
+.noticia h3 {
+  margin: 15px;
+  font-size: 1.5em;
+  color: #004C99;
+}
+
+.noticia p {
+  margin: 0 15px 15px 15px;
+}
+
+.noticia a {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  background-color: #82001C;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.noticia:hover {
+  transform: translateY(-5px);
+}
