@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './Header.css';
 
 function Header() {
@@ -11,10 +12,10 @@ function Header() {
         <div className="nav-left">
           <img src="/logo-levante.png" alt="Levante UD" className="logo" />
           <ul className="nav-links">
-            <li><a href="#noticias">Noticias</a></li>
-            <li><a href="#tw-levante">TW Levante</a></li>
-            <li><a href="#partidos">Partidos</a></li>
-            <li><a href="#comunidad">Comunidad</a></li>
+            <li><NavLink to="/noticias" activeClassName="active">Noticias</NavLink></li>
+            <li><NavLink to="/tw-levante" activeClassName="active">TW Levante</NavLink></li>
+            <li><NavLink to="/partidos" activeClassName="active">Partidos</NavLink></li>
+            <li><NavLink to="/comunidad" activeClassName="active">Comunidad</NavLink></li>
           </ul>
         </div>
       </nav>

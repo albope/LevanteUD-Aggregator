@@ -5,8 +5,8 @@ function HeroSection() {
   return (
     <section className="hero">
       <div className="hero-content">
-        <h1>El decano en los medios</h1>
-        <p>Consulta todas las noticias de nuestro equipo</p>
+        <h1>El Decano en los medios</h1>
+        <p>Consulta todas las noticias de nuestro equipo en un solo lugar</p>
       </div>
     </section>
   );

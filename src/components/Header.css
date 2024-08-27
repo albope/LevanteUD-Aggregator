@@ -51,8 +51,12 @@
   text-decoration: none;
   font-weight: 500;
   font-size: 1em;
+  padding: 10px;
 }
 
-.nav-links a:hover {
-  color: #ffdd57;
+.nav-links a:hover,
+.nav-links a.active {
+  background-color: #ffdd57; /* Color de fondo para la sección activa */
+  color: #051e40; /* Cambia el color del texto para la sección activa */
+  border-radius: 8px;
 }

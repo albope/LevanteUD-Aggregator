@@ -99,3 +99,18 @@ h1, h2 {
   color: white;
   padding: 40px 20px;
 }
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.noticias {
+  flex: 3;
+}
+
+.resultado-partido {
+  flex: 1;
+  margin-left: 15px; /* Reducir el margen para que quede más cerca de las noticias */
+}
