@@ -15,10 +15,13 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  padding: 10px; /* Mantenemos el padding para los botones internos */
+  border-radius: 5px;
+  background-color: transparent; /* Cambiamos el fondo a transparente para eliminar el recuadro */
 }
 
 .filtro-medios button {
-  background-color: #f0f0f0;
+  background-color: #c0c0c0; /* Botones con un fondo ligeramente más oscuro */
   border: none;
   padding: 10px 15px;
   cursor: pointer;
@@ -54,7 +57,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Para asegurar que todo el contenido se distribuya correctamente */
+  justify-content: space-between;
 }
 
 .noticia img {
@@ -73,7 +76,7 @@
   font-size: 1em;
   line-height: 1.6;
   color: #333;
-  flex-grow: 1; /* Para que el párrafo ocupe el espacio disponible y empuje el contenido hacia abajo */
+  flex-grow: 1;
 }
 
 .noticia-footer {
@@ -92,6 +95,7 @@
 
 .noticia-date {
   font-style: italic;
+  font-weight: bold; /* Hacer la fecha en negrita */
   color: #999;
 }
 
@@ -104,7 +108,7 @@
   text-decoration: none;
   font-weight: 600;
   border-radius: 0 0 8px 8px;
-  margin-top: auto; /* Asegurar que el botón se mantenga en la parte inferior */
+  margin-top: auto;
 }
 
 .noticia:hover {
@@ -116,6 +120,7 @@
   justify-content: center;
   margin: 20px 0;
 }
+
 .paginacion button {
   background-color: #004C99;
   color: white;

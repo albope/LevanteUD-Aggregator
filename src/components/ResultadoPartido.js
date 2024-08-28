@@ -4,7 +4,7 @@ import './ResultadoPartido.css';
 function ResultadoPartido() {
   return (
     <div className="resultado-partido">
-      <h2>Resultados en Vivo</h2>
+      <h2>LIGA HYPERMOTION</h2>
       <iframe 
         src="https://www.lavanguardia.com/deportes/resultados/laliga-segunda-division" 
         width="100%" 

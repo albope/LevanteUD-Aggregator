@@ -1,0 +1,30 @@
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: transparent; /* Fondo transparente */
+    color: black; /* Texto en negro */
+    font-size: 14px;
+    line-height: 1.5; /* Ajusta la separación entre las líneas */
+  }
+  
+  .footer a {
+    color: black; /* Enlaces en negro */
+    text-decoration: none; /* Sin subrayado */
+  }
+  
+  .footer a:hover {
+    text-decoration: underline; /* Subrayado al pasar el ratón */
+  }
+  
+  .grana {
+    color: #82001C; /* Color grana */
+  }
+  
+  .azul {
+    color: #004C99; /* Color azul */
+  }
+  
+  .heart-icon {
+    color: red; /* Color del corazón */
+    margin-left: 5px; /* Espacio entre el texto y el corazón */
+  }  

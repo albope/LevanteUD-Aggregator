@@ -17,13 +17,12 @@ function Noticias() {
     'Levante-EMV',
     'Las Provincias',
     'Superdeporte',
-    'Sport',
     'Cadena SER',
     'Cadena COPE',
-    'Mundo Levante', // Añadido Mundo Levante
-    'Plaza Deportiva', // Añadido Plaza Deportiva
-    'Onda Cero', // Añadido Onda Cero
-    'Web Oficial' // Añadido Web Oficial
+    'Mundo Levante',
+    'Plaza Deportiva',
+    'Onda Cero',
+    'Web Oficial'
   ];
 
   useEffect(() => {
@@ -34,28 +33,14 @@ function Noticias() {
         const levanteEmvResponse = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.levante-emv.com/rss/section/4551&api_key=speh0bxtygrsc03srteqfp1ticqxutrrmsuquc12');
         const lasProvinciasResponse = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.lasprovincias.es/rss/2.0/?section=levanteud&api_key=speh0bxtygrsc03srteqfp1ticqxutrrmsuquc12');
         const superdeporteResponse = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.superdeporte.es/rss/section/43013&api_key=speh0bxtygrsc03srteqfp1ticqxutrrmsuquc12');
-        const sportResponse = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.sport.es/es/rss/segunda-division/rss.xml&api_key=speh0bxtygrsc03srteqfp1ticqxutrrmsuquc12');
-        const serResponse = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://rss.app/feeds/GMbbAxBg8SbWY3GS.xml&api_key=speh0bxtygrsc03srteqfp1ticqxutrrmsuquc12');
-        const copeResponse = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://rss.app/feeds/czazTY8Gr7GVkTki.xml&api_key=speh0bxtygrsc03srteqfp1ticqxutrrmsuquc12');
+        const cadenaSerResponse = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://rss.app/feeds/GMbbAxBg8SbWY3GS.xml&api_key=speh0bxtygrsc03srteqfp1ticqxutrrmsuquc12');
+        const cadenaCopeResponse = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://rss.app/feeds/czazTY8Gr7GVkTki.xml&api_key=speh0bxtygrsc03srteqfp1ticqxutrrmsuquc12');
         const mundoLevanteResponse = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://rss.app/feeds/cmBVJDKFWG0lBtPw.xml&api_key=speh0bxtygrsc03srteqfp1ticqxutrrmsuquc12');
         const plazaDeportivaResponse = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://rss.app/feeds/KAmY0GogaZLicdMC.xml&api_key=speh0bxtygrsc03srteqfp1ticqxutrrmsuquc12');
         const ondaCeroResponse = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://rss.app/feeds/k5DpjmKgC7eT8v1L.xml&api_key=speh0bxtygrsc03srteqfp1ticqxutrrmsuquc12');
         const webOficialResponse = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://rss.app/feeds/9BoB7JgXSWmJhCJn.xml&api_key=speh0bxtygrsc03srteqfp1ticqxutrrmsuquc12');
 
-        if (
-          !marcaResponse.ok ||
-          !asResponse.ok ||
-          !levanteEmvResponse.ok ||
-          !lasProvinciasResponse.ok ||
-          !superdeporteResponse.ok ||
-          !sportResponse.ok ||
-          !serResponse.ok ||
-          !copeResponse.ok ||
-          !mundoLevanteResponse.ok ||
-          !plazaDeportivaResponse.ok ||
-          !ondaCeroResponse.ok ||
-          !webOficialResponse.ok
-        ) {
+        if (!marcaResponse.ok || !asResponse.ok || !levanteEmvResponse.ok || !lasProvinciasResponse.ok || !superdeporteResponse.ok || !cadenaSerResponse.ok || !cadenaCopeResponse.ok || !mundoLevanteResponse.ok || !plazaDeportivaResponse.ok || !ondaCeroResponse.ok || !webOficialResponse.ok) {
           throw new Error('Error al obtener las noticias');
         }
 
@@ -64,22 +49,17 @@ function Noticias() {
         const levanteEmvData = await levanteEmvResponse.json();
         const lasProvinciasData = await lasProvinciasResponse.json();
         const superdeporteData = await superdeporteResponse.json();
-        const sportData = await sportResponse.json();
-        const serData = await serResponse.json();
-        const copeData = await copeResponse.json();
+        const cadenaSerData = await cadenaSerResponse.json();
+        const cadenaCopeData = await cadenaCopeResponse.json();
         const mundoLevanteData = await mundoLevanteResponse.json();
         const plazaDeportivaData = await plazaDeportivaResponse.json();
         const ondaCeroData = await ondaCeroResponse.json();
         const webOficialData = await webOficialResponse.json();
 
-        // Filtrar noticias del Levante UD en AS y Sport (incluyendo términos adicionales relacionados)
+        // Filtrar noticias del Levante UD en AS y otros medios (incluyendo términos adicionales relacionados)
         const keywords = ['Levante', 'granota', 'Orriols'];
 
         const levanteNoticiasAs = asData.items.filter(noticia =>
-          keywords.some(keyword => noticia.title.includes(keyword) || noticia.description.includes(keyword))
-        );
-
-        const levanteNoticiasSport = sportData.items.filter(noticia =>
           keywords.some(keyword => noticia.title.includes(keyword) || noticia.description.includes(keyword))
         );
 
@@ -89,48 +69,30 @@ function Noticias() {
         const levanteEmvNoticias = levanteEmvData.items.map(noticia => ({ ...noticia, source: 'Levante-EMV' }));
         const lasProvinciasNoticias = lasProvinciasData.items.map(noticia => ({ ...noticia, source: 'Las Provincias' }));
         const superdeporteNoticias = superdeporteData.items.map(noticia => ({ ...noticia, source: 'Superdeporte' }));
-        const sportNoticias = levanteNoticiasSport.map(noticia => ({ ...noticia, source: 'Sport' }));
-        const serNoticias = serData.items.map(noticia => ({ ...noticia, source: 'Cadena SER' }));
-        const copeNoticias = copeData.items.map(noticia => ({ ...noticia, source: 'Cadena COPE' }));
+        const cadenaSerNoticias = cadenaSerData.items.map(noticia => ({ ...noticia, source: 'Cadena SER' }));
+        const cadenaCopeNoticias = cadenaCopeData.items.map(noticia => ({ ...noticia, source: 'Cadena COPE' }));
         const mundoLevanteNoticias = mundoLevanteData.items.map(noticia => ({ ...noticia, source: 'Mundo Levante' }));
         const plazaDeportivaNoticias = plazaDeportivaData.items.map(noticia => ({ ...noticia, source: 'Plaza Deportiva' }));
         const ondaCeroNoticias = ondaCeroData.items.map(noticia => ({ ...noticia, source: 'Onda Cero' }));
         const webOficialNoticias = webOficialData.items.map(noticia => ({ ...noticia, source: 'Web Oficial' }));
 
         // Eliminar duplicados en las noticias
-        const noticiasUnicas = Array.from(
-          new Set(
-            [
-              ...marcaNoticias,
-              ...asNoticias,
-              ...levanteEmvNoticias,
-              ...lasProvinciasNoticias,
-              ...superdeporteNoticias,
-              ...sportNoticias,
-              ...serNoticias,
-              ...copeNoticias,
-              ...mundoLevanteNoticias,
-              ...plazaDeportivaNoticias,
-              ...ondaCeroNoticias,
-              ...webOficialNoticias
-            ].map(noticia => noticia.title)
-          )
-        ).map(title =>
-          [
-            ...marcaNoticias,
-            ...asNoticias,
-            ...levanteEmvNoticias,
-            ...lasProvinciasNoticias,
-            ...superdeporteNoticias,
-            ...sportNoticias,
-            ...serNoticias,
-            ...copeNoticias,
-            ...mundoLevanteNoticias,
-            ...plazaDeportivaNoticias,
-            ...ondaCeroNoticias,
-            ...webOficialNoticias
-          ].find(noticia => noticia.title === title)
-        );
+        const todasNoticias = [
+          ...marcaNoticias,
+          ...asNoticias,
+          ...levanteEmvNoticias,
+          ...lasProvinciasNoticias,
+          ...superdeporteNoticias,
+          ...cadenaSerNoticias,
+          ...cadenaCopeNoticias,
+          ...mundoLevanteNoticias,
+          ...plazaDeportivaNoticias,
+          ...ondaCeroNoticias,
+          ...webOficialNoticias,
+        ];
+
+        const noticiasUnicas = Array.from(new Set(todasNoticias.map(noticia => noticia.title)))
+          .map(title => todasNoticias.find(noticia => noticia.title === title));
 
         setNoticias(noticiasUnicas);
       } catch (error) {
@@ -157,11 +119,6 @@ function Noticias() {
     const filtroBusqueda = busqueda === '' || noticia.title.toLowerCase().includes(busqueda.toLowerCase());
     return filtroMedio && filtroBusqueda;
   });
-
-  // Ordenar las noticias por fecha en "Todos los medios"
-  if (filtro === 'Todos los medios') {
-    noticiasFiltradas.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
-  }
 
   // Paginación
   const indexOfLastNoticia = paginaActual * noticiasPorPagina;
@@ -207,7 +164,9 @@ function Noticias() {
               <p>{truncateText(noticia.description.replace(/<\/?[^>]+(>|$)/g, ""), 20)}</p>
               <div className="noticia-footer">
                 <span className="noticia-source">{noticia.source}</span>
-                <span className="noticia-date">{new Date(noticia.pubDate).toLocaleDateString()}</span>
+                <span className="noticia-date">
+                  {new Date(noticia.pubDate).getFullYear() === 1970 ? 'Fecha no disponible' : new Date(noticia.pubDate).toLocaleDateString()}
+                </span>
               </div>
               <a href={noticia.link} target="_blank" rel="noopener noreferrer">Leer más</a>
             </div>
