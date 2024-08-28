@@ -72,6 +72,25 @@
   color: #333;
 }
 
+.noticia-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px 10px 15px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.noticia-source {
+  font-weight: bold;
+  color: #004C99;
+}
+
+.noticia-date {
+  font-style: italic;
+  color: #999;
+}
+
 .noticia a {
   display: block;
   text-align: center;
