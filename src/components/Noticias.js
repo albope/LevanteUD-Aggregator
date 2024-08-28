@@ -23,7 +23,14 @@ function Noticias() {
           throw new Error('Error al obtener las noticias');
         }
         const data = await response.json();
-        setNoticias(data.items);
+
+        // Establecer la fuente de cada noticia a "Marca"
+        const noticiasConFuente = data.items.map(noticia => ({
+          ...noticia,
+          source: 'Marca'
+        }));
+
+        setNoticias(noticiasConFuente);
       } catch (error) {
         console.error('Error al obtener las noticias:', error);
         setError(error.message);
@@ -58,7 +65,7 @@ function Noticias() {
       <div className="grid">
         {noticiasFiltradas.map((noticia, index) => (
           <div className="noticia" key={index}>
-            <img src={noticia.enclosure?.link || '../assets/images/Escudo_del_Levante UD.jpg'} alt={noticia.title} />
+            <img src={noticia.enclosure?.link || 'ruta-imagen-por-defecto.jpg'} alt={noticia.title} />
             <h3>{noticia.title}</h3>
             <p>{noticia.description.replace(/<\/?[^>]+(>|$)/g, "")}</p> {/* Remover HTML */}
             <a href={noticia.link} target="_blank" rel="noopener noreferrer">Leer más</a>
