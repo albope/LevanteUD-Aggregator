@@ -1,62 +1,67 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Noticias.css';
 
 function Noticias() {
   const [filtro, setFiltro] = useState('Todos los medios');
-  const [busqueda, setBusqueda] = useState('');
+  const [noticias, setNoticias] = useState([]);
+  const [error, setError] = useState(null);
 
   const medios = [
-    'Todos los medios', 
-    'Marca', 
-    'AS', 
-    'Mundo Deportivo', 
-    'Levante-EMV', 
+    'Todos los medios',
+    'Marca',
+    'AS',
+    'Mundo Deportivo',
+    'Levante-EMV',
     'Las Provincias'
   ];
 
-  // Datos simulados para noticias
-  const todasLasNoticias = [
-    { id: 1, title: 'Victoria del Levante UD en el último partido', summary: 'El Levante UD ha ganado su último partido...', img: 'noticia1.jpg', source: 'Marca' },
-    { id: 2, title: 'Próximos enfrentamientos del Levante UD', summary: 'Conoce los próximos partidos...', img: 'noticia2.jpg', source: 'AS' },
-    { id: 3, title: 'Nueva incorporación al equipo', summary: 'El Levante UD ha fichado a un nuevo jugador...', img: 'noticia3.jpg', source: 'Mundo Deportivo' },
-    // Añadir más noticias con diferentes medios
-  ];
+  useEffect(() => {
+    const fetchNoticias = async () => {
+      try {
+        const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://e00-marca.uecdn.es/rss/futbol/levante.xml&api_key=speh0bxtygrsc03srteqfp1ticqxutrrmsuquc12');
+        if (!response.ok) {
+          throw new Error('Error al obtener las noticias');
+        }
+        const data = await response.json();
+        setNoticias(data.items);
+      } catch (error) {
+        console.error('Error al obtener las noticias:', error);
+        setError(error.message);
+      }
+    };
+
+    fetchNoticias();
+  }, []);
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   // Filtrar noticias por medio seleccionado
-  const noticiasFiltradas = todasLasNoticias.filter(noticia => 
-    (filtro === 'Todos los medios' || noticia.source.toLowerCase().includes(busqueda.toLowerCase()))
+  const noticiasFiltradas = noticias.filter(noticia =>
+    filtro === 'Todos los medios' || noticia.source === filtro
   );
 
   return (
     <section className="noticias" id="noticias">
-      <div className="filtro">
-        <div className="filtro-medios">
-          {medios.map(medio => (
-            <button 
-              key={medio} 
-              className={medio === filtro ? 'active' : ''}
-              onClick={() => setFiltro(medio)}
-            >
-              {medio}
-            </button>
-          ))}
-        </div>
-        <div className="busqueda">
-          <input 
-            type="text" 
-            placeholder="Filtrar por medios..." 
-            value={busqueda} 
-            onChange={(e) => setBusqueda(e.target.value)}
-          />
-        </div>
+      <div className="filtro-medios">
+        {medios.map(medio => (
+          <button
+            key={medio}
+            className={medio === filtro ? 'active' : ''}
+            onClick={() => setFiltro(medio)}
+          >
+            {medio}
+          </button>
+        ))}
       </div>
       <div className="grid">
-        {noticiasFiltradas.map(noticia => (
-          <div className="noticia" key={noticia.id}>
-            <img src={noticia.img} alt={noticia.title} />
+        {noticiasFiltradas.map((noticia, index) => (
+          <div className="noticia" key={index}>
+            <img src={noticia.enclosure?.link || '../assets/images/Escudo_del_Levante UD.jpg'} alt={noticia.title} />
             <h3>{noticia.title}</h3>
-            <p>{noticia.summary}</p>
-            <a href="#">Leer más</a>
+            <p>{noticia.description.replace(/<\/?[^>]+(>|$)/g, "")}</p> {/* Remover HTML */}
+            <a href={noticia.link} target="_blank" rel="noopener noreferrer">Leer más</a>
           </div>
         ))}
       </div>
