@@ -1,11 +1,44 @@
 .twitter-feed {
-  background-color: #004C99;
-  color: white;
+  background-color: #f8f9fa;
+  color: #333;
   padding: 40px 20px;
-  text-align: center;
 }
 
 .twitter-feed h2 {
   font-size: 2em;
   margin-bottom: 20px;
+  color: #d32f2f;
+}
+
+.filtro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.filtro button {
+  background-color: #e0e0e0;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.filtro button.active {
+  background-color: #004C99;
+  color: white;
+}
+
+.tweets {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.twitter-timeline {
+  width: 100%;
+  border-radius: 8px;
 }
